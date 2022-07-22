@@ -1,8 +1,15 @@
 
+//Assignment 2
+const kiosks = [
+  {name: "kiwi", price: 30.00, quantity: 3},
+  {name: "apples", price: 40.00, quantity: 6},
+  {name: "grapes", price: 50.00, quantity: 2}
+
+];
       //Number1
 let kiosk = {
-        name:"kiwi",
-        price: 25.00,
+        // name:"kiwi",
+         price: 25.00,
         calculateFruitCost: function (fruitName, quantity) {
       return `5 ${fruitName} for Ksh ${this.price * quantity}`; 
           }
@@ -25,10 +32,7 @@ let kiosk = {
  
         }
       }
-      }
-      
-      var kioskCalc = new KioskCalc("orange", 5)
-      var kioskCalc = new KioskCalc("kiwi", 4)
+      }     
       var kioskCalc = new KioskCalc("grape", 7)
       console.log(kioskCalc.getTotalCost())
       
