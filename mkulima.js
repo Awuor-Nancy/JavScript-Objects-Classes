@@ -1,36 +1,38 @@
 class Mkulima {
     constructor() {
-      this.listoffarms = [];
-      this.groceryvendors = [];
-      this.products = [];
+        this.groceryvendors = [];
+        this.products = [];
+        this.farmz = [];
+      
       this.addFarm = (farmId, name, farmer, phone, address) => {
-        this.listoffarms.push({farmId, name, farmer, phone, address});
+        this.farmz.push({farmId, name, farmer, phone, address});
       
     };
        this.removeFarm = (Id) => {
-        let target = this.listoffarms.find(item => item.id === Id);
-        let farmindex = this.listoffarms.indexOf(target);
-        this.listoffarms.splice(farmindex, 1);
+        let item = this.farmz.find(item => item.id === Id);
+        let numberIndex = this.farmz.indexOf(item);
+        this.farmz.splice(numberIndex, 4);
       };
       this.updateFarm = (oldId, newFarm, newName, newFarmer,newPhone,newAddress) => {
-        let currentfarm = this.listoffarms.find(item => item.farmId === oldId);
+        let currentfarm = this.farmz.find(item => item.farmId === oldId);
         currentfarm.farmId = newFarm;
         currentfarm.name = newName;
         currentfarm.farmer = newFarmer;
         currentfarm.phone = newPhone;
         currentfarm.address = newAddress;
       }
+      
       this.getFarm = (Id) => {
-        console.log(this.listoffarms.find(item => item.farmId === Id));
+        console.log(this.farmz.find(item => item.farmId === Id));
       };
       this.addProduct = (productId, name, price) => {
         this.products.push({productId, name, price});
       
     };
     this.removeProduct = (productId) => {
-      let target = this.products.find(item => item.id === productId);
-      let farmindex = this.products.indexOf(target);
-      this.products.splice(farmindex, 1);
+      let item = this.products.find(item => item.id === productId);
+      let numberIndex = this.products.indexOf(item);
+      this.products.splice(numberIndex, 3);
     };
     this.updateProduct = (old,newproductId, newname, newprice) => {
       let currentproduct = this.products.find(item => item.productId === old);
@@ -47,30 +49,35 @@ class Mkulima {
      this.calculateOrderCost = (productId,quantity) => {
         let target =  this.products.find(product => product.productId === productId);
            let total = target.price * quantity;
-           return `The total cost of ${quantity} ${target.name} is ${total}`;
+           return `The sum of products is ${quantity} ${target.name} is ${total}`;
      }
     
   }
 }
 
-let farm = new Mkulima();
-farm.addFarm("36789067", "Poultry", "Pinky", "0706112100", "Mukono");
-farm.addFarm("56764537", "Piggery", "Susan", "0706112100", "Mukono");
-farm.addFarm("12567890","Tomato Farm","Busingye", "0784547218", "Kyaggwe");
-farm.addFarm("26789354","CoffeeFarm", "Verite", "078976543" , "Kicukiro");
-// console.log(farm.listoffarms);
-farm.removeFarm("12567890");
-farm.removeFarm("26789354");
-farm.updateFarm("36789067", "12367890","Vegetables", "Verite-Umuhooza", "078976543" , "Kicukiro-Kigali");
-console.log(farm.listoffarms);
-farm.getFarm("56764537");
-farm.addProduct("1234","Tomatoes", 35)
-farm.addProduct("45678","Bananas", 350)
-farm.addProduct("6789","Chicken", 1200)
-farm.removeProduct("6789")
-farm.updateProduct("1234","3214","Onions", 120)
-farm.addProduct("2581","Potatoes", 145)
-farm.getProduct("45678")
-farm.printProducts();
-console.log(farm.calculateOrderCost("2581", 5));
-console.log(farm.calculateOrderCost("3214", 10));
+let shamba = new Mkulima();
+
+shamba.addFarm("36789067", "guava", "lency", "0742507533", "upperhill");
+shamba.addFarm("56764537", "Lola", "gumba","0706112100", "Lavi");
+shamba.addFarm("12567890","Maize","Edrian", "0719698792", "runda");
+shamba.addFarm("26789354","pawpaw", "Vincent", "0011273738" , "Kahawa");
+
+shamba.addProduct("1234","spinach", 105)
+shamba.addProduct("45678","beans", 550)
+shamba.addProduct("6789","", 400)
+
+shamba.removeProduct("6789")
+shamba.updateProduct("1234","3214","Onions", 500)
+shamba.addProduct("2581","brocolli", 90)
+
+shamba.getProduct("45678")
+shamba.printProducts();
+console.log(shamba.calculateOrderCost("2581", 127));
+console.log(shamba.calculateOrderCost("3214", 90));
+
+shamba.removeFarm("12567890");
+shamba.removeFarm("26789354");
+shamba.updateFarm("36789067", "12367890","broccoli", "nancvida", "078976543" , "Kisumu");
+
+console.log(shamba.farmz);
+shamba.getFarm("56764537");
